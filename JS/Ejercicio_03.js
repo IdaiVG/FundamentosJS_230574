@@ -230,7 +230,7 @@ clientePais="Extranjero"
 
 let datosClientePromociones = {clienteCorreo, clientePais, clienteNievel, clienteSaldo, ProductoMarca, ProductoPrecio}
 
-//El nuevo objeto que creamos serìa un ejemplo de la informaciòn que enviariamos al àrea de Marketing para la difusiòn de promociones
+//El nuevo objeto que creamos serìa un ejemplo de la informaciòn que enviariamos al área de Marketing para la difusiòn de promociones
 console.log("Los daros del cliente y sus hábitos de compra son: ")
 console.table(datosClientePromociones)
 
@@ -240,9 +240,48 @@ console.log("Imprimimos la estructura y valores del Objeto PRODUCTO")
 console.table(Producto);
 console.log("Imprimimos la estructura y valores del Objeto PEDIDO")
 console.table(pedido);
-//Suponiendo que el usuario ya los realizò el pago del pedido se convertira en una VENTA que requiere informaciòn de ambos objetos
-//IMPORTANTE: ASSING, no solo permite la fusión de 2 o más objetos, también nmuta los objetos, también muta los objetos originales, perdiendo el valor original del ID en este caso
+//Suponiendo que el usuario ya los realizó el pago del pedido se convertira en una VENTA que requiere información de ambos objetos
+//IMPORTANTE: ASSING, no solo permite la fusión de 2 o más objetos, también muta los objetos originales, perdiendo el valor original del ID en este caso
 let Producto3={...Producto}
 const Venta = Object.assign(Producto3, pedido);
 console.log("Consultamos este nuevo objeto VENTA")
 console.table(Venta);
+///Para que se vean ambos Id se debe agregar otra funcion 
+//Unión de Objetos usando SPREAD OPERATOR para evitar la perdida de información con objetos que comparten el mismo nombre de sus propiedades
+console.log("%c11.- Unión de objetos usando el SPREAD OPERATOR (...)", style_console);
+
+//Parchamos el error, reiniciando el valor del producto ID al original
+//Producto.Id=100;
+
+console.table(Producto)
+console.table(Comprador)
+console.table(pedido)
+
+const Venta2 ={
+    producto: {...Producto},
+    comprador:{...Comprador},
+    pedido:{pedido}
+}
+console.log("Fusionamos los 3 objetos en uno nuevo, sin perdida de información")
+console.log(Venta2)
+console.table(Venta2)
+
+console.log("%c12.- Mutabilidad POST Unión de Objetos", style_console);
+
+//Vamos a verificar el estatus de mutabilidad de los objetos
+console.log("Vamos a verificar el estatus de mutabilidad del objeto PEDIDO")
+console.log(`Esta el objeto de Pedido Congelado ?: ${Object.isFrozen(pedido)}`);
+console.log(`Esta el objeto de Pedido Sellado ?: ${Object.isSealed(pedido)}`);
+
+console.log("Vamos a verificar el estatus de mutabilidad del objeto COMPRADOR")
+console.log(`Esta el objeto de Pedido Congelado ?: ${Object.isFrozen(Comprador)}`);
+console.log(`Esta el objeto de Pedido Sellado ?: ${Object.isSealed(Comprador)}`);
+
+console.log("Vamos a verificar el estatus de mutabilidad del objeto PRODUCTO")
+console.log(`Esta el objeto de Pedido Congelado ?: ${Object.isFrozen(Producto)}`);
+console.log(`Esta el objeto de Pedido Sellado ?: ${Object.isSealed(Producto)}`);
+
+//Modificamos la estructura de producto, agregando una nueva propiedad
+Producto['isLegacy']=false
+console.log(Producto)
+console.table(Venta2);
