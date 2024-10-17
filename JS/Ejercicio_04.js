@@ -78,12 +78,12 @@ console.table(matrizIrregualar)
 
 //Accediendo a los valores de una matríz
 
-console.log("Leyendo las Propiedades de una Matriz Regular")
+console.log("Leyendo las Propiedades de una Matríz Regular")
 console.log(`Elementos en la posición [0][0]: ${matriz[0][0]}`)
 console.log(`Elementos en la posición [1][2]: ${matriz[1][2]}`)
 
 //Accediendo a los valores de una matríz Irregular
-console.log("Leyendo las Propiedades de una Matriz Irregular")
+console.log("Leyendo las Propiedades de una Matríz Irregular")
 console.log(`Elementos en la posición [0][0]: ${matrizIrregualar[0][0]}`)
 console.log(`Elementos en la posición [2][0] (Promedio de Ángel): ${matrizIrregualar[2][0]}`)
 console.log(`Elementos en la posición [1][2] (¿Es Karen mayor de edad?): ${matrizIrregualar[1][2]}`)
@@ -103,3 +103,90 @@ console.log("Y para las irregulares?")
 let nuemeroFilas = matrizIrregualar.length
 for(let i =0; i<nuemeroFilas; i++)
     console.log(`La longitud de la fila ${[i]} es = ${matrizIrregualar[i].length}`)
+console.log("%c5.- Agregar un nuevo elemento a un Arreglo (PUSH)", style_console);
+
+let estudiantes = ["Ángel Rufino","Adrián Peréz","Karen Lizbeth","Osvaldo Abishai","Daniel Bravo"]
+console.log("Los elementos actuales del arreglo son: ")
+console.table(estudiantes)
+console.log("Agregamos a un nuevo estudiante llamado: Abril Guzman")
+estudiantes.push("Abril Guzman")//Siempre agrega el elemento en la última posición
+console.log("Después de agregarla los elementos del arreglo son: ")
+console.table(estudiantes)
+
+console.log("'Qué pasa con los Mixtos?")
+console.log("El arregloMixto actualmente tiene los siguientes elementos: ")
+console.table(arregloMixto);
+console.log("Agregamos la palabra: \"Hola\", como un nuevo elemento")
+arregloMixto.push("Hola");
+console.log("Y también agregamos el número -3128817875487448415.23597518864, siendo este un BigInt")
+arregloMixto.push(BigInt(-3128817875487448415.23597518864))
+console.log("Después de estas dos operaciones el arreglo queda con los siguientes elementos: ")
+console.table(arregloMixto)
+
+console.log("%c6.- Agregar un nuevo elemento a un Arreglo (UNSHIFT) en la posición inicial", style_console);
+console.table(estudiantes)
+console.log("Ahora agregamos a Uriel Medina, al comienzo del arreglo.")
+estudiantes.unshift("Uriel Medina")
+console.table(estudiantes)
+
+console.log("%c7.- Eliminar elementos de un Arreglo en la última posición (POP)", style_console);
+console.log("El arreglo tiene los siguientes elementos: ")
+console.table(estudiantes)
+console.log("Para este caso eliminaremos a Abril Guzman, en la última posición.")
+estudiantes.pop();
+console.log("Después de eliminar el elemento el arreglo quedo de la siguiente manera: ")
+console.table(estudiantes)
+
+console.log("%c8.- Eliminar elementos de un Arreglo en la primera posición (SHIFT))", style_console);
+console.log("El arreglo tiene los siguientes elementos: ")
+console.table(estudiantes)
+console.log("Para este caso eliminaremos a Uriel Medina, en la primera posición.")
+estudiantes.shift();
+console.log("Después de eliminar el elemento el arreglo quedo de la siguiente manera: ")
+console.table(estudiantes)
+
+console.log("%c9.- Modificar un arreglo en un arreglo nuevo con posiciones defindas (SPLICE)", style_console);
+console.log("El arreglo tiene los elementos: ")
+console.table(estudiantes)
+console.log("Dividir el arreglo en uno nuevo eliminado ciertos elementos en base a su posiciòn")
+//Cuando la funciòn SPLICE recibe un solo parámetro eliminara los elementos de esa posición en adelante
+estudiantes.splice(2)
+console.table(estudiantes)
+
+//Cuando la función SPLICE recibe 2 parámetros elimina todos los elementos que no estén en ese rango
+estudiantes.push("Tania Ibarra")
+estudiantes.push("Zyanya Zacatenco")
+estudiantes.push("Juvenal Vìveros")
+estudiantes.push("Jhonathan Baldermar")
+estudiantes.push("Matias Mejia")
+console.log("Se han agregado 5 nuevos estudiantes, por lo que el arreglo es: ")
+console.table(estudiantes)
+console.log("Ahora ya tenemos los elementos suficientes para aplicar el método SPLICE con dos parámetros que serán 3,5")
+estudiantes.splice(3,5)
+console.log("Resultado en: ")
+console.table(estudiantes)
+
+//SPLICE sirve también para insertar elementos en posiciones específicas, ahora necesitamos insertar a: "Jesús Dominguez" entre "Ángel Rufino" "Adrián Peréz"
+console.log("Ahora vamos a insertar a \"Jesús Dominguez\", en los elementos de la poisición 0 y 1.")
+estudiantes.splice(1,0,"Jesús Dominguez")
+console.log("Resultando en:")
+console.table(estudiantes)
+
+//Tambièn SPLICE sirve para reemplazar elementos por otros, en este caso remplazaremos a  "Ángel Rufino" por "Brandon León"
+console.log("Ahora vamos a insertar a \"Ángel Rufino\", en los elementos de la poisiciòn por \"Brandon León\".")
+estudiantes.splice(0,1,"Brandon León")
+console.log("Resultando en:")
+console.table(estudiantes)
+
+console.log("%c10.- Métodos para la manipulación de Arreglos INMUTABLES", style_console);
+let signosZodiacales = ["Aries", "Tauro","Cáncer","Leo","Virgo","Libra","Escorpio","Sagitario","Capricorno","Acuario","Piscis"]
+//Llaves para un objeto, corchetes para arreglo
+//Destructuración de Arreglos
+let [signo1,,signo3,,,,signo7,,,,,] = signosZodiacales;
+console.log(`El primer signo zodiacal es: ${signo1}`)
+console.log(`El tercer signo zodiacal es: ${signo3}`)
+//console.log(`El cuarto signo zodiacal es: ${signo4}`)
+console.log(`El septimo signo zodiacal es: ${signo7}`)
+
+//Congelamos el arreglo volviendolo INMUTABLE:
+Object.freeze(signosZodiacales);
